@@ -8,7 +8,7 @@ fi
 
 # Fetch latest Paper jar name
 LATEST_VERSION=$(wget -qO- https://api.papermc.io/v2/projects/paper | jq -r '.versions[-1]')
-LATEST_BUILD=$(wget -qO- "https://api.papermc.io/v2/projects/paper/versions/${LATEST_VERSION}/builds" | jq -r '.builds | map(select(.channel == "default") | .build) | .[-1]')
+LATEST_BUILD=$(wget -qO- "https://api.papermc.io/v2/projects/paper/versions/${LATEST_VERSION}/builds" | jq -r '.builds[-1].build')
 JAR_NAME=paper-${LATEST_VERSION}-${LATEST_BUILD}.jar
 
 # Default the allocated ram to 4G if not set
@@ -17,9 +17,18 @@ if [ -z "$ALLOCATED_RAM" ]; then
     ALLOCATED_RAM="4G"
 fi
 
-# Download the latest Paper jar and launch it with Aikar's Flags -> https://docs.papermc.io/paper/aikars-flags
+# Download the latest Paper jar and launch it with Aikar's Flags
 cd /home/minecraft/world
+
+echo "Downloading Paper version ${LATEST_VERSION} build ${LATEST_BUILD}..."
 wget -O paper.jar "https://api.papermc.io/v2/projects/paper/versions/${LATEST_VERSION}/builds/${LATEST_BUILD}/downloads/${JAR_NAME}"
+
+# Fail-safe: Ensure the jar downloaded successfully before continuing
+if [ ! -f paper.jar ] || [ ! -s paper.jar ]; then
+    echo "Error: Failed to download paper.jar from PaperMC API."
+    exit 1
+fi
+
 echo "eula=${EULA}" > eula.txt
 chown -R minecraft:minecraft /home/minecraft
 chmod +x paper.jar
