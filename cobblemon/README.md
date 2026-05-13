@@ -9,7 +9,7 @@ environment:
 
 # Increasing RAM Allocation
 
-If you need to increase the RAM (by default it's 4GB), you can do so by adding the following environment variable to the service configuration:
+If you need to increase the RAM (by default it's 8GB), you can do so by adding the following environment variable to the service configuration:
 
 ```yaml
 environment:
