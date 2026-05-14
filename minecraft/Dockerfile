@@ -5,7 +5,8 @@ FROM alpine:3.23
 RUN apk add --no-cache \
     openjdk25-jre \
     jq \
-    rcon
+    rcon\
+    coreutils
 
 # Create a user and usergroup with high UID and GID to not overlap with an existing host user or usergroup
 RUN addgroup -g 10001 minecraft && \
