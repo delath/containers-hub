@@ -1,9 +1,9 @@
 # Use Alpine because it's more secure, more performant and more size friendly
-FROM alpine:3
+FROM alpine:3.23
 
 # Install everything we need
 RUN apk add --no-cache \
-    openjdk21-jre \
+    openjdk25-jre \
     jq \
     rcon
 
