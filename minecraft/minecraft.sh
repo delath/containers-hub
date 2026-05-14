@@ -46,8 +46,6 @@ if [ -z "$ALLOCATED_RAM" ]; then
     ALLOCATED_RAM="4G"
 fi
 
-sleep 5m
-
 echo "eula=${EULA}" > eula.txt
 chown -R minecraft:minecraft /home/minecraft
 chmod +x paper.jar
