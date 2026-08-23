@@ -5,8 +5,10 @@ FROM debian:12-slim
 RUN apt-get update && apt-get install -y \
     lib32gcc-s1 \
     curl \
-    rcon \
     && rm -rf /var/lib/apt/lists/*
+
+# Download and install a standalone rcon client
+RUN curl -sqL "https://github.com/gorcon/rcon-cli/releases/download/v0.10.3/rcon-0.10.3-amd64_linux.tar.gz" | tar zxvf - -C /usr/local/bin/ rcon-0.10.3-amd64_linux/rcon --strip-components=1
 
 # Create a user and usergroup with high UID and GID to not overlap with an existing host user or usergroup
 RUN addgroup -gid 10001 pzuser && \
