@@ -115,17 +115,17 @@
 </div>
 <br>
 
-## [Project Zomboid](https://github.com/delath/containers-hub/tree/main/dst)
+## [Project Zomboid](https://github.com/delath/containers-hub/tree/main/pz)
 
 <div>
     <p>
       Project Zomboid server based on 
       <a href="https://pzwiki.net/wiki/Dedicated_server">
-        the wiki.gg guide
+        the pzwiki.net guide
       </a>
-      <img align="right" alt="GitHub License" src="https://img.shields.io/docker/image-size/delath/dst">
-      <img align="right" alt="GitHub License" src="https://img.shields.io/docker/stars/delath/dst">
-      <img align="right" alt="GitHub License" src="https://img.shields.io/docker/pulls/delath/dst">
+      <img align="right" alt="GitHub License" src="https://img.shields.io/docker/image-size/delath/pz">
+      <img align="right" alt="GitHub License" src="https://img.shields.io/docker/stars/delath/pz">
+      <img align="right" alt="GitHub License" src="https://img.shields.io/docker/pulls/delath/pz">
     </p>
 </div>
 <br>

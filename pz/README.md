@@ -36,6 +36,7 @@ services:
     ports:
       - "16261:16261/udp"
       - "16262:16262/udp"
+      - "27015:27015/tcp"
     volumes:
       - ./Zomboid:/home/pzuser/Zomboid
       - ./Server:/home/pzuser/server
@@ -43,4 +44,17 @@ services:
     environment:
       - SERVERNAME=servertest
       - ADMINPASSWORD=Password
+```
+
+# Sending commands to the server console
+
+If you want to send commands to the console, you can leverage the built-in RCON tool. You need to enable RCON in the server configuration file (`<SERVERNAME>.ini`) located in `./Zomboid/Server/`.
+```ini
+RCONPort=27015
+RCONPassword=<rcon_password>
+```
+
+Then you can send any command with the following syntax
+```bash
+docker exec -it pz sh -c "rcon -H 127.0.0.1 -p 27015 -P <rcon_password> <command>"
 ```

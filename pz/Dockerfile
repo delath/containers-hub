@@ -5,6 +5,7 @@ FROM debian:12-slim
 RUN apt-get update && apt-get install -y \
     lib32gcc-s1 \
     curl \
+    rcon \
     && rm -rf /var/lib/apt/lists/*
 
 # Create a user and usergroup with high UID and GID to not overlap with an existing host user or usergroup
